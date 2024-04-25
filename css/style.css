@@ -1,9 +1,14 @@
+/* me tome la libertad de usar variables */
+
 :root {
     --color0: #000000;
     --color1: #191f24;
     --color2: #101519;
     --color3: #ffb800;
     --color4: #cdcdcd;
+    --navbar-height: 55px;
+    --footer-height: 25rem;
+    --footer-height-mobile: 45rem;
 }
 
 * {
@@ -14,15 +19,34 @@
     transition: all 300ms;
 }
 
+a {
+    text-decoration: none;
+}
+
+h1 {
+    padding: 3rem 3rem 1rem;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+h2 {
+    padding: 3rem 3rem .5rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* NAVIGATION */
+
 .navbar {
     padding: 0px 0px;
-    height: 55px;
+    height: var(--navbar-height);
 }
 
 .navbar-brand,
-.nav-link, .nav-right a {
+.nav-link,
+.nav-right a {
     display: flex;
-    height: 55px;
+    height: var(--navbar-height);
     align-items: center;
 }
 
@@ -39,7 +63,7 @@
     color: var(--color3);
 }
 
-.nav-left{
+.nav-left {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -65,6 +89,10 @@
     border: none;
 }
 
+.nav-right a {
+    margin: .25rem;
+}
+
 .flat-icons {
     filter: brightness(0) invert(0.9);
     transition-property: all;
@@ -77,11 +105,202 @@
     transition-duration: 100ms;
 }
 
-.nav-right a {
-    margin: .25rem;
+
+/* MENU */
+
+main {
+    background-color: #000000;
+    min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
+}
+
+/* SEASON CAROUSEL */
+
+#season {
+    display: flex;
+    justify-content: center;
+}
+
+#seasonal-slider {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 764px;
+    height: 427px;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+}
+
+#seasonal-slider img {
+    width: 764px;
+    height: fit-content;
+    object-fit: cover;
+    scroll-snap-align: center;
+}
+
+
+/* CARD SCROLLER */
+
+.scroller-title {
+    padding-top: 15px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+
+}
+
+.scroller {
+    display: flex;
+    flex-direction: row;
+    margin: 5px 30px;
+    align-items: flex-start;
+    align-content: center;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: max-content;
+    scrollbar-width: none;
+    scroll-snap-type: inline mandatory;
+}
+
+/* ANIME CARD */
+
+.anime-card {
+    display: flex;
+    flex-direction: column !important;
+    align-items: flex-start;
+    align-content: center;
+    flex-wrap: nowrap;
+    height: 375px;
+    padding: 10px;
+    transition: all 0.1s;
+    width: min-content;
+    scroll-snap-align: start;
+    text-decoration: none;
+}
+
+.anime-card:hover {
+    transition: all 0.5s;
+    background-color: #2b2b2b;
+}
+
+.anime-card img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 8px;
+}
+
+.anime-card h3 {
+    font-size: 12pt;
+    text-wrap: wrap;
+    text-overflow: hidden;
+    color: white;
+    font-weight: bold;
+}
+
+/* SEARCH */
+
+.search-container {
+    padding: 25px 50px;
+    display: flex;
+}
+
+.search-input {
+    background-color: #151515;
+    width: 40vw;
+    height: 2em;
+    border: 0;
+    border-radius: 45px;
+    outline: none;
+    padding: .5em 1.5em;
+    font-size: 16pt;
+}
+
+/* ANIME CARD GRID */
+
+.search-results,
+.season-list,
+.user-list {
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: 380px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    /* minmax : mínimo de 200px (para que mantenga el tamaño de la carta)
+    máximo de 1 fracción */
+    margin: 0 4rem;
+    justify-items: center;
+}
+
+/* SIMULCAST */
+
+.week {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 30em;
+}
+
+.week li {
+    border-left: 1px solid #c6c6c6;
+    border-right: 1px solid #c6c6c6;
+    width: 13em;
+    display: flex;
+    font-display: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+/* FOOTER */
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    align-items: flex-start;
+    background-color: black;
+    padding-bottom: 50px;
+    padding-top: 40px;
+    height: var(--footer-height);
+    background-image: linear-gradient(black, 85%, var(--color3) 120%);
+}
+
+
+footer ul li {
+    padding: 10px 0px;
+}
+
+.footer-links {
+    color: #c6c6c6;
+}
+
+.footer-links:hover {
+    color: white;
+}
+
+.social-media {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100px;
+    flex-wrap: nowrap;
+}
+
+.media-icon {
+    width: 30px;
+    margin-right: 3px;
 }
 
 @media (max-width: 991px) {
+
+    main {
+        min-height: calc(100vh - var(--navbar-height) - var(--footer-height-mobile));
+    }
 
     .navbar-brand {
         margin-left: .5rem;
@@ -104,6 +323,24 @@
         color: white;
         background-color: var(--color1);
     }
-    
+
+    #season {
+        display: none;
+    }
+
+    .search-container {
+        justify-content: center;
+    }
+
+    .search-input {
+        width: 80vw;
+    }
+
+
+    footer {
+        flex-direction: column;
+        height: var(--footer-height-mobile);
+    }
+
 
 }
