@@ -24,7 +24,7 @@ a {
 }
 
 h1 {
-    padding: 3rem 3rem 1rem;
+    padding: 3rem 3rem 0.5rem;
     font-weight: bold;
     font-size: 2rem;
 }
@@ -35,7 +35,19 @@ h2 {
     font-size: 1.5rem;
 }
 
+.subtitle{
+    padding: 0rem 10rem 1rem;
+    font-weight: lighter;
+    font-size: 1.25rem;
+    color: white;
+    opacity: 0.6;
+}
+
 /* NAVIGATION */
+header{
+    position: sticky;
+    top: 0;
+}
 
 .navbar {
     padding: 0px 0px;
@@ -111,6 +123,13 @@ h2 {
 main {
     background-color: #000000;
     min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
+}
+
+/* CAROUSEL */
+
+.carousel-item.active {
+    display: flex !important;
+    justify-content: center;
 }
 
 /* SEASON CAROUSEL */
