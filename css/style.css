@@ -17,6 +17,7 @@
     font-family: sans-serif;
     list-style-type: none;
     transition: all 300ms;
+    box-sizing: border-box;
 }
 
 a {
@@ -24,7 +25,7 @@ a {
 }
 
 h1 {
-    padding: 3rem 3rem 0.5rem;
+    padding: .5rem 0rem .5rem 3rem;
     font-weight: bold;
     font-size: 2rem;
 }
@@ -35,8 +36,8 @@ h2 {
     font-size: 1.5rem;
 }
 
-.subtitle{
-    padding: 0rem 10rem 1rem;
+.subtitle {
+    padding: 0rem 0rem 1rem 7rem;
     font-weight: lighter;
     font-size: 1.25rem;
     color: white;
@@ -44,7 +45,7 @@ h2 {
 }
 
 /* NAVIGATION */
-header{
+header {
     position: sticky;
     top: 0;
 }
@@ -123,40 +124,62 @@ header{
 main {
     background-color: #000000;
     min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
+    margin: 0px;
+    padding: 0px;
 }
 
 /* CAROUSEL */
 
-.carousel-item.active {
-    display: flex !important;
+.carousel-container {
+    display: flex;
     justify-content: center;
 }
 
 /* SEASON CAROUSEL */
 
-#season {
-    display: flex;
-    justify-content: center;
+#season-carousel {
+    width: 764px;
+    height: 420px;
 }
 
-#seasonal-slider {
-    display: flex;
-    flex-direction: row;
-    overflow-x: scroll;
-    overflow-y: hidden;
+.carousel-anime-img {
     width: 764px;
-    height: 427px;
-    scrollbar-width: none;
-    scroll-snap-type: x mandatory;
-}
-
-#seasonal-slider img {
-    width: 764px;
-    height: fit-content;
+    height: 420px;
     object-fit: cover;
-    scroll-snap-align: center;
 }
 
+/* MUSIC CAROUSEL */
+
+#music-carousel {
+    width: 896px;
+}
+
+#music-carousel .carousel-inner .carousel-item {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+}
+
+#music-carousel .carousel-inner .carousel-item iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#music-carousel button.carousel-control-prev {
+    position: absolute;
+    left: -20%;
+}
+
+#music-carousel button.carousel-control-next {
+    position: absolute;
+    right: -20%;
+}
 
 /* CARD SCROLLER */
 
@@ -172,7 +195,8 @@ main {
 .scroller {
     display: flex;
     flex-direction: row;
-    margin: 5px 30px;
+    margin: 0px 30px;
+    padding: 5px 0px;
     align-items: flex-start;
     align-content: center;
     flex-wrap: nowrap;
@@ -238,6 +262,11 @@ main {
     font-size: 16pt;
 }
 
+/* para poder ver las versiones con y sin resultados */
+.placeholder-result {
+    display: none;
+}
+
 /* ANIME CARD GRID */
 
 .search-results,
@@ -247,7 +276,7 @@ main {
     gap: 1rem;
     grid-auto-rows: 380px;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    /* minmax : mínimo de 200px (para que mantenga el tamaño de la carta)
+    /* minmax : mínimo de 200px
     máximo de 1 fracción */
     margin: 0 4rem;
     justify-items: center;
@@ -256,10 +285,12 @@ main {
 /* SIMULCAST */
 
 .week {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    height: 30em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    grid-auto-rows: 30rem;
+    margin: 0;
+    gap: 0.2rem;
+    justify-items: center;
 }
 
 .week li {
@@ -315,8 +346,35 @@ footer ul li {
     margin-right: 3px;
 }
 
+@media (max-width: 1024px) {
+
+    #music-carousel button.carousel-control-prev {
+        position: absolute;
+        left: 20%;
+        top: 105%;
+    }
+    
+    #music-carousel button.carousel-control-next {
+        position: absolute;
+        right: 20%;
+        top: 105%;
+    }
+    
+}
+
 @media (max-width: 991px) {
 
+    h1 {
+        font-size: 1.4rem;
+        padding: .5rem 0rem 0rem 1rem;
+    }
+    .subtitle {
+        font-size: .7rem;
+        padding: 0rem 0rem 1rem 3rem;
+    }
+    h2{
+        font-size: 1.25rem;
+    }
     main {
         min-height: calc(100vh - var(--navbar-height) - var(--footer-height-mobile));
     }
@@ -343,7 +401,7 @@ footer ul li {
         background-color: var(--color1);
     }
 
-    #season {
+    #season-carousel {
         display: none;
     }
 
@@ -362,4 +420,49 @@ footer ul li {
     }
 
 
+}
+
+@media (max-width: 426px) {
+
+    .anime-card {
+        height: 200px;
+        width: min-content;
+    }
+
+    .anime-card img {
+        width: 90px;
+        height: 135px;
+        margin-bottom: 4px;
+    }
+
+    .anime-card h3 {
+        font-size: 8pt;
+        text-wrap: wrap;
+        text-overflow: hidden;
+        color: white;
+        font-weight: bold;
+    }
+
+    .search-results,
+    .season-list,
+    .user-list {
+        display: grid;
+        gap: 1rem;
+        grid-auto-rows: 200px;
+        grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+        margin: 0 4rem;
+        justify-items: center;
+    }
+
+    #music-carousel button.carousel-control-prev {
+        position: absolute;
+        left: 20%;
+        top: 111%;
+    }
+    
+    #music-carousel button.carousel-control-next {
+        position: absolute;
+        right: 20%;
+        top: 111%;
+    }
 }
